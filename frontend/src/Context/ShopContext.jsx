@@ -26,7 +26,7 @@ const getDefaultCart = () => {
 const ShopContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState(getDefaultCart());
-    const url = "http://localhost:4000"
+    const url = "https://panache-backend.onrender.com"
     const [token, setToken] = useState("")
     const [userId, setUserId] = useState(null);
 
