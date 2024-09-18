@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { ShopContext } from '../../Context/ShopContext';
 import "./ResetPassword.css";
 
 const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
+
+
 const ResetPassword = () => {
+    const { url } = useContext(ShopContext);
     const [email, setEmail] = useState("");
     const [otp, setOtp] = useState("");
     const [newPassword, setNewPassword] = useState("");
@@ -34,7 +38,7 @@ const ResetPassword = () => {
         }
 
         try {
-            const response = await axios.post('http://localhost:4000/api/user/reset-password', {
+            const response = await axios.post(url + '/api/user/reset-password', {
                 email: email.trim(),
                 otp: otp.trim(),
                 newPassword: newPassword.trim(),
