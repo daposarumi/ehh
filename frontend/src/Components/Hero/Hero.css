@@ -1,0 +1,179 @@
+/* @font-face {
+    font-family: "Prida01";
+    src: url("https://fontsforyou.com/fonts/p/Prida01.ttf");
+} */
+ /* h1 {
+    font-family: "Prida01";
+    font-weight: bolder;
+    font-size: 70px;
+    line-height: 1.2;
+}
+
+
+.heading {
+    font-family: "Prida01";
+    font-weight: bolder;
+    font-size: 70px;
+    padding-top: 100px;
+    line-height: 1.3;
+    margin-left: 80px;
+}
+.hero-button{
+        
+    margin-top: 50px;
+    margin-left: 80px;
+}
+p{
+    margin-left: 80px;
+}
+
+ @media(max-width:1024px){
+    .hero-button{
+        
+        margin-top: 50px;
+        margin-left: 70px;
+       
+        
+        
+        
+    }
+    .heading{
+        padding-top: 80px;
+        font-size: 55px;
+    }
+}
+@media(max-width:900px){
+    .heading{
+        font-size: 40px;
+        padding-top: 90px;
+        width: 80%;
+    }
+    p{
+        font-size: 10px;
+        width: 75%
+    }
+ 
+}
+
+
+
+ @media(max-width:768px){
+    .heading{
+        text-align: center;
+        margin: 0 auto;
+        width: 70%;
+        font-size: 60px;
+    }
+    p {
+        text-align: center;
+        margin: 0 auto;
+        width: 70%; 
+    }
+    .hero-button{
+        
+        margin: 0 auto;
+        margin-top: 50px;
+        margin-bottom : 50px;
+    }
+} */
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Quicksand', sans-serif;
+    overflow-x: hidden; 
+}
+.btn-primary {
+    background-color: #068E7D;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 12px 38px;
+    margin-top: 25px;
+    border: none;
+    border-radius: 60px;
+}
+.btn-primary:hover {
+ background-color:white;
+ color:#068E7D;
+ border:#068E7D solid 1px;
+ 
+}
+
+
+
+.hero {
+    width: 100%
+}
+
+@font-face {
+    font-family: "Prida01";
+    src: url("https://fontsforyou.com/fonts/p/Prida01.ttf");
+}
+h1 {
+    font-family: "Prida01";
+    font-weight: bolder;
+    font-size: 90px;
+}
+p {
+    font-weight: 400;
+    line-height: normal;
+}
+.top {
+    padding-left: 60px;
+    margin-top: 90px;
+}
+.topimage {
+    background-image: url(../Assets/shalewa.jpg);
+    height: 678px;
+    background-position-x: center;
+    background-size: cover;
+}
+
+@media (max-width: 1280px) {
+   
+    .logo {
+        width: 45px;
+        margin-top: 5px;
+    }
+    h1 {
+        font-size: 50px;
+        line-height: normal;
+    }
+    .top {
+        margin-top: 55px;
+        padding-left: 0;
+    }
+    .mobilebreak {display: none;}
+
+    body {
+        overflow-x: hidden;
+        text-align: center;
+    }
+    .btn-primary {
+        margin-bottom: 60px;
+        padding: 12px 40px;
+        background-color: transparent;
+        color:#068E7D;
+        border:#068E7D solid 1px;
+    }
+    .btn-primary:hover {
+        color: white;
+        border: none;
+        background-color: #068E7D;
+    }
+    p {
+        padding: 0 25px;
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+
+
+

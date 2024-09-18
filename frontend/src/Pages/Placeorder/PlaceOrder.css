@@ -1,0 +1,183 @@
+/* .place-order{
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    gap: 50px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+}
+.place-order-left{
+    width: 100%;
+    
+    max-width: max(30%,500px);
+}
+.cartitems-total .title{
+    font-size: 30px;
+    font-weight: 600;
+}
+.place-order-left .title{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+.place-order-left input{
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    outline-color: turquoise;
+}
+input::placeholder {
+    color: grey;
+}
+.place-order-left .multi-fields {
+    display: flex;
+    gap: 10px;
+}
+.place-order-right{
+    width: 100%;
+    max-width: max(40%,500px);
+}
+ .cart-total{
+    margin-top: 30px;
+    width: 262px;
+    height: 58px;
+    outline: none;
+    border: none;
+    background: #00A8BA;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+ } */
+
+
+ /* Container for the whole form */
+
+ .bold {
+    font-weight: bold;
+ }
+.place-order {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+    gap: 50px;
+    margin-top: 100px;
+    margin-bottom: 80px;
+}
+
+/* Left section of the form */
+.place-order-left {
+    width: 100%;
+    max-width: max(30%, 500px);
+}
+
+/* Cart total section */
+.place-order-right {
+    width: 100%;
+    max-width: max(40%, 500px);
+}
+
+/* Title styles */
+.cartitems-total .title,
+.place-order-left .title {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+/* Input field styles */
+.place-order-left input {
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c5c5c5;
+    border-radius: 4px;
+    outline-color: turquoise;
+}
+
+/* Placeholder styling */
+input::placeholder {
+    color: grey;
+}
+
+/* Multi-field container (e.g., for city and state inputs) */
+.place-order-left .multi-fields {
+    display: flex;
+    gap: 10px;
+}
+
+/* Cart total button */
+.cart-total {
+    margin-top: 30px;
+    width: 262px;
+    height: 58px;
+    outline: none;
+    border: none;
+    background: #00A8BA;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+ 
+}
+
+/* Responsive Design: Adjust layout for smaller screens */
+@media (max-width: 768px) {
+    /* Stacks the form and cart total vertically on smaller screens */
+    .place-order {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* Full-width for both sections on smaller screens */
+    .place-order-left, 
+    .place-order-right {
+        max-width: 100%;
+        
+    }
+
+    /* Adjust input and field gaps for mobile */
+    .place-order-left input, 
+    .place-order-left .multi-fields input {
+        padding: 10px;
+        
+    }
+
+    .place-order-left .multi-fields {
+        flex-direction: column;
+
+    }
+
+    /* Adjust title sizes for mobile */
+    .cartitems-total .title, 
+    .place-order-left .title {
+        font-size: 24px;
+        padding-left: 10px;
+    }
+
+    /* Smaller button on mobile */
+    .cart-total {
+        width: 100%; /* Full width */
+        height: 45px; /* Adjust height */
+        font-size: 12px; 
+    }
+}
+
+/* Extra small screens (e.g., phones) */
+@media (max-width: 480px) {
+    /* Adjust title font sizes for extra small screens */
+    .cartitems-total .title, 
+    .place-order-left .title {
+        font-size: 20px;
+    }
+
+    /* Smaller button on extra small screens */
+    .cart-total {
+        width: 100%; /* Full width */
+        height: 40px; /* Adjust height */
+        font-size: 10px;
+    }
+}
