@@ -7,7 +7,7 @@ import Orders from './Pages/Orders/Orders'
 
 const App = () => {
 
-  const url = "http://localhost:4000"
+  const url = "https://panache-backend.onrender.com"
   return (
     <div><Navbar/>
     <hr/>
