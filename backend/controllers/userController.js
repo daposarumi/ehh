@@ -1,16 +1,43 @@
 import userModel from "../models/userModel.js";
 import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+import crypto from "crypto";
 import validator from "validator";
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
-import otpGenerator from 'otp-generator'
+import otpGenerator from 'otp-generator';
 
 dotenv.config();
 
 // Create a token with expiration
 const createToken = (id, expiresIn = '1h') => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn });
+};
+
+// Hash password using crypto
+const hashPassword = (password, salt) => {
+    return new Promise((resolve, reject) => {
+        crypto.pbkdf2(password, salt, 100000, 64, 'sha512', (err, derivedKey) => {
+            if (err) return reject(err);
+            resolve(derivedKey.toString('hex'));
+        });
+    });
+};
+
+// Generate a salt
+const generateSalt = () => {
+    return new Promise((resolve, reject) => {
+        crypto.randomBytes(16, (err, buffer) => {
+            if (err) return reject(err);
+            resolve(buffer.toString('hex'));
+        });
+    });
+};
+
+// Verify password
+const verifyPassword = async (password, hashedPassword) => {
+    const [salt, key] = hashedPassword.split(':');
+    const hashedBuffer = await hashPassword(password, salt);
+    return hashedBuffer === key;
 };
 
 // Login user
@@ -22,7 +49,7 @@ const loginUser = async (req, res) => {
             return res.status(404).json({ success: false, message: "User not found" });
         }
 
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = await verifyPassword(password, user.password);
         if (!isMatch) {
             return res.status(400).json({ success: false, message: "Invalid credentials" });
         }
@@ -52,8 +79,8 @@ const registerUser = async (req, res) => {
             return res.status(400).json({ success: false, message: "Password must be at least 8 characters long" });
         }
 
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
+        const salt = await generateSalt();
+        const hashedPassword = `${salt}:${await hashPassword(password, salt)}`;
 
         const newUser = new userModel({
             name,
@@ -120,96 +147,8 @@ const forgotPassword = async (req, res) => {
     }
 };
 
-
-
-
-
-
-
-
-// const forgotPassword = async (req, res) => {
-//     const { email } = req.body;
-
-//     try {
-//         const user = await userModel.findOne({ email });
-//         if (!user) {
-//             return res.status(404).json({ success: false, message: "User not found" });
-//         }
-
-//         // Generate a reset token
-//         const resetToken = createToken(user._id, '1h'); // Token expires in 1 hour
-
-//         // Configure nodemailer
-//         const transporter = nodemailer.createTransport({
-//             host: 'mail.panachebyfunmi.com',
-//             port: 465,
-//             secure: true,
-//             auth: {
-//                 user: process.env.OUTLOOK_EMAIL,
-//                 pass: process.env.OUTLOOK_PASSWORD,
-//             },
-//             tls: {
-//                 rejectUnauthorized: false,
-//             },
-//         });
-
-//         // Generate the password reset link
-//         const resetUrl = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
-
-//         const mailOptions = {
-//             from: process.env.OUTLOOK_EMAIL,
-//             to: user.email,
-//             subject: 'Password Reset Request',
-//             html: `<p>You have requested a password reset. Click the link below to reset your password:</p>
-//                    <a href="${resetUrl}">Reset Password</a>`,
-//         };
-
-//         // Send the email
-//         await transporter.sendMail(mailOptions);
-
-//         res.status(200).json({ success: true, message: 'Reset link sent to your email' });
-//     } catch (error) {
-//         console.error('Error sending reset link:', error);
-//         res.status(500).json({ success: false, message: 'Error sending reset link' });
-//     }
-// };
-
-// Reset password
-// const resetPassword = async (req, res) => {
-//     const { token, newPassword } = req.body;
-
-//     if (!token) {
-//         return res.status(400).json({ success: false, message: "Invalid or missing token" });
-//     }
-
-//     try {
-//         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-//         const user = await userModel.findById(decoded.id);
-
-//         if (!user) {
-//             return res.status(404).json({ success: false, message: "Invalid token or user not found" });
-//         }
-
-//         // Hash the new password
-//         const salt = await bcrypt.genSalt(10);
-//         const hashedPassword = await bcrypt.hash(newPassword, salt);
-
-//         // Update user's password
-//         user.password = hashedPassword;
-//         await user.save();
-
-//         res.status(200).json({ success: true, message: "Password reset successfully" });
-//     } catch (error) {
-//         if (error.name === 'TokenExpiredError') {
-//             return res.status(400).json({ success: false, message: "Reset token has expired" });
-//         }
-//         console.error('Error during password reset:', error);
-//         res.status(500).json({ success: false, message: "Internal server error" });
-//     }
-// };
-
+// Verify OTP and reset password
 const verifyOtpAndResetPassword = async (req, res) => {
-
     console.log("Request received");
     const { email, otp, newPassword } = req.body;
 
@@ -225,8 +164,8 @@ const verifyOtpAndResetPassword = async (req, res) => {
         }
 
         // Hash the new password
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(newPassword, salt);
+        const salt = await generateSalt();
+        const hashedPassword = `${salt}:${await hashPassword(newPassword, salt)}`;
 
         // Update user's password and clear OTP
         user.password = hashedPassword;
@@ -242,7 +181,4 @@ const verifyOtpAndResetPassword = async (req, res) => {
     }
 };
 
-
-
-
-export { loginUser, forgotPassword, verifyOtpAndResetPassword, registerUser};
+export { loginUser, forgotPassword, verifyOtpAndResetPassword, registerUser };
