@@ -18,8 +18,8 @@ export const Footer = () => {
             <li>Company</li>
         </ul>
         <div className='footer-icons'>
-            <div >
-                <FaInstagram style={{ fontSize: '1.2rem', color: 'white' }}/>    
+            <div>
+                <a href="https://www.instagram.com/panachebyfunmi?igsh=dHJ5NmR6ejc2NG84 "><FaInstagram style={{ fontSize: '1.2rem', color: 'white' }}/></a> 
             </div>
             <div>
                 <FaFacebook style={{ fontSize: '1.2rem', color: 'white' }}/>    

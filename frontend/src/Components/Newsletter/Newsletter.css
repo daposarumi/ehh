@@ -122,6 +122,11 @@
         width: 90%;
     }
 
+    .newsletter h1{
+        font-size: 40px;
+        padding: 10px;
+    }
+
     .newsletter button {
         margin-top: 14px;
     }

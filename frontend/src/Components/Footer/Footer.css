@@ -116,7 +116,7 @@
     }
 
     .footer-icons {
-        gap: 10px; /* Reduced gap for smaller screens */
+        gap: 16px; /* Reduced gap for smaller screens */
     }
 
     .footer-copyright {

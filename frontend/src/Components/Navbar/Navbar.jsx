@@ -2,7 +2,7 @@ import React, { useState, useContext, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { CiSearch } from 'react-icons/ci';
 import { PiShoppingCartSimpleThin, PiUserThin } from 'react-icons/pi';
-import { RxHamburgerMenu } from 'react-icons/rx';
+import { RxHamburgerMenu, RxCross1 } from 'react-icons/rx';
 import { ShopContext } from '../../Context/ShopContext';
 import logo from '../Assets/blue logo.png';
 import "./Navbar.css";
@@ -12,6 +12,7 @@ export const Navbar = ({ setShowLogin, searchTerm, setSearchTerm }) => {
   const [menu, setMenu] = useState("shop");
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { getTotalCartItems, token, setToken } = useContext(ShopContext);
   const menuRef = useRef(null);
   const navigate = useNavigate();
@@ -36,25 +37,14 @@ export const Navbar = ({ setShowLogin, searchTerm, setSearchTerm }) => {
     }, 500);
   };
 
-   const dropdown_toggle = (e) => {
-     menuRef.current.classList.toggle('nav-menu-visible');
-     e.target.classList.toggle('open');
-   };
-
-  
-  //  const dropdown_toggle = () => {
-  //    if (menuRef.current) {
-  //      menuRef.current.classList.toggle('active');
-  //    } else {
-  //      console.warn('menuRef is undefined');
-  //    }
-  //  };
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const handleIconClick = () => {
     setIsSearchVisible(!isSearchVisible);
   };
 
-  // Live search functionality
   const handleSearchChange = (e) => {
     const query = e.target.value;
     setSearchTerm(query);
@@ -76,15 +66,16 @@ export const Navbar = ({ setShowLogin, searchTerm, setSearchTerm }) => {
 
   return (
     <div className='navbar'>
-      <Link to="/"><img src={logo} width="80" alt="PBF logo" /></Link>
-      <ul ref={menuRef} className='nav-menu'>
-        <li onClick={() => setMenu("shop")} className={menu === "shop" ? "active" : ""}>
+      <Link to="/"><img src={logo} width="80" alt="PBF logo" className="nav-logo" /></Link>
+      
+      <ul ref={menuRef} className={`nav-menu ${isMenuOpen ? 'nav-menu-visible' : ''}`}>
+        <li onClick={() => { setMenu("shop"); setIsMenuOpen(false); }} className={menu === "shop" ? "active" : ""}>
           <Link to='/' style={{ textDecoration: 'none' }}>Shop</Link>
         </li>
-        <li onClick={() => setMenu("women")} className={menu === "women" ? "active" : ""}>
+        <li onClick={() => { setMenu("women"); setIsMenuOpen(false); }} className={menu === "women" ? "active" : ""}>
           <Link to='/women' style={{ textDecoration: 'none' }}>Women</Link>
         </li>
-        <li onClick={() => setMenu("men")} className={menu === "men" ? "active" : ""}>
+        <li onClick={() => { setMenu("men"); setIsMenuOpen(false); }} className={menu === "men" ? "active" : ""}>
           <Link to='/men' style={{ textDecoration: 'none' }}>Men</Link>
         </li>
       </ul>
@@ -135,18 +126,15 @@ export const Navbar = ({ setShowLogin, searchTerm, setSearchTerm }) => {
         </Link>
         <div className='cart-count'>{getTotalCartItems()}</div>
       </div>
-      <RxHamburgerMenu
-        style={{ fontSize: '1.8rem', color: 'black' }}
-        onClick={dropdown_toggle}
-        className='nav-dropdown'
-        
-      />
       {loading && <div className="loading-indicator"></div>}
       {userMessage && (
         <div className={`user-message ${userMessage.type}`}>
           {userMessage.text}
         </div>
       )}
+      <div className='nav-menu-toggle' onClick={toggleMenu}>
+        {isMenuOpen ? <RxCross1 style={{ fontSize: '1.8rem', color: 'black' }} /> : <RxHamburgerMenu style={{ fontSize: '1.8rem', color: 'black' }} />}
+      </div>
     </div>
   );
 };
