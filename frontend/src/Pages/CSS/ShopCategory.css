@@ -1,40 +1,151 @@
-.shopcategory-indexSort{
+/* Desktop styles (default) */
+.shopcategory-indexSort {
     display: flex;
     margin: 40px 170px;
     justify-content: space-between;
     align-items: center;
-}
-.shopcategory-sort{
-    padding: 10px 20px;
+  }
+  
+  .shopcategory-sort {
+    padding: 10px 15px; /* Adjust padding as needed */
     border-radius: 40px;
     border: 1px solid #888;
-}
-.dropdown{
-    display: inline-block;
-    font-size: 0.7rem;
-}
-.shopcategory-indexSort p span{
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Keeps the sort button aligned on desktop */
+    padding-left: 10px; /* Reduce left padding for less space before text */
+  }
+  
+  .shopcategory-indexSort p span {
     font-weight: 600;
-
-}
-.shopcategory-products{
+  }
+  
+  .shopcategory-products {
     margin: -13px 160px 50px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 30px;
-}
-
-.shopcategory-sort {
-    display: flex;
-    align-items: center; /* Aligns items vertically in the center */
+    justify-content: center;
   }
   
-  .shopcategory-sort select {
-    margin-left: 5px; /* Adjust this value to reduce or increase the space between the text and dropdown */
+  /* Add space at the bottom of each image, price, and name group */
+  .shopcategory-products .item {
+    margin-bottom: 30px; /* Adjust as needed for bottom spacing */
   }
   
-  .dropdown {
-    margin-left: 2px; /* Adjust the space between the dropdown icon and the text */
+  .shopcategory-products img {
+    display: block; /* Ensure images are block level */
+    margin-bottom: 10px; /* Space between image and price */
   }
   
+  .shopcategory-products .price {
+    display: block;
+    margin-top: 5px; /* Space between price and name */
+  }
+  
+  .shopcategory-products .name {
+    display: block;
+    margin-bottom: 5px; /* Space between name and image */
+  }
+  
+ /* Responsive for mobile */
+@media (max-width: 768px) {
+    .shopcategory-indexSort {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 90%;
+      margin: 30px auto; /* Centers the section on the page */
+    }
+  
+    .shopcategory-sort {
+      margin-left: 0;
+      width: auto; /* Keep it small and auto-width */
+      justify-content: flex-end;
+      padding: 5px 10px; /* Adjust padding as needed */
+      margin-top: 10px; /* Add top margin */
+    }
+  
+    .shopcategory-indexSort p {
+      margin-top: 10px; /* Add top margin */
+    }
+  
+    .shopcategory-sort select {
+      font-size: 0.8rem; /* Smaller font size for the select */
+      padding: 5px; /* Adjust padding inside the select */
+      width: auto; /* Adjust width if needed */
+    }
+  
+    .shopcategory-products {
+      grid-template-columns: 1fr; /* Full width for single column on mobile */
+      width: 90%; /* Almost full width */
+      gap: 20px; /* Adjust the gap between images */
+      margin: 20px auto; /* Center-align the images */
+      justify-items: center; /* Center the grid items */
+    }
+  
+    /* Add space at the bottom of each image, price, and name group on mobile */
+    .shopcategory-products .item {
+      margin-bottom: 30px; /* Adjust as needed for bottom spacing */
+    }
+  
+    .shopcategory-products img {
+      margin-bottom: 10px; /* Space between image and price */
+    }
+  
+    .shopcategory-products .price {
+      margin-top: 5px; /* Space between price and name */
+    }
+  
+    .shopcategory-products .name {
+      margin-bottom: 5px; /* Space between name and image */
+    }
+  }
+  
+  /* Very small screens */
+  @media (max-width: 480px) {
+    .shopcategory-products {
+      grid-template-columns: 1fr; /* Single column */
+      width: 100%; /* Full width for very small screens */
+      gap: 15px; /* Adjust gap for very small screens */
+      margin: 40px auto;
+      justify-items: center; /* Ensures images are centered */
+    }
+  
+    .shopcategory-indexSort {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 95%; /* Ensures a bit more space on very small screens */
+      margin: 10px auto;
+    }
+  
+    .shopcategory-sort {
+      width: auto; /* Keep the sort button small */
+      justify-content: flex-end;
+      padding: 5px 10px; /* Adjust padding as needed */
+      margin-top: 10px; /* Add top margin */
+    }
+  
+    .shopcategory-sort select {
+      font-size: 0.7rem; /* Smaller font size for the select on very small screens */
+      padding: 4px; /* Adjust padding inside the select */
+      width: auto; /* Adjust width if needed */
+    }
+  
+    /* Add space at the bottom of each image, price, and name group on very small screens */
+    .shopcategory-products .item {
+      margin-bottom: 30px; /* Adjust as needed for bottom spacing */
+    }
+  
+    .shopcategory-products img {
+      margin-bottom: 10px; /* Space between image and price */
+    }
+  
+    .shopcategory-products .price {
+      margin-top: 5px; /* Space between price and name */
+    }
+  
+    .shopcategory-products .name {
+      margin-bottom: 5px; /* Space between name and image */
+    }
+  }
   

@@ -65,9 +65,9 @@
     align-items: center;
     justify-content: center;
     margin-top: -19px;
-    margin-left: -42px;
+    margin-left: -43px;
     border-radius: 11px;
-    font-size: 10px;
+    font-size: 13px;
     background: red;
     color: white;
     text-align: center;
@@ -303,13 +303,13 @@
         width: 30px;
     } */
     .cart-count{
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
     }
 }
 @media(max-width:800px){
     .navbar{
-        padding: 10px 0;
+        padding: 20px 0;
     }
     .nav-dropdown{
         display: block;
@@ -334,7 +334,7 @@
 
 @media(max-width:500px){
     .navbar{
-        padding: 8px 0;
+        padding: 14px 4px;
         gap: 0;
     }
     .nav-logo{

@@ -114,15 +114,15 @@ export const Navbar = ({ setShowLogin, searchTerm, setSearchTerm }) => {
           </div>
         )}
         <CiSearch
-          style={{ fontSize: '1.7rem', cursor: 'pointer' }}
+          style={{ fontSize: '2.2rem', cursor: 'pointer' }}
           onClick={handleIconClick}
           className="navbar-search-button"
         />
         {!token ? (
-          <PiUserThin onClick={() => setShowLogin(true)} style={{ fontSize: '1.8rem' }} className='user-icon' />
+          <PiUserThin onClick={() => setShowLogin(true)} style={{ fontSize: '2.2rem' }} className='user-icon' />
         ) : (
           <div className='navbar-profile'>
-            <PiUserThin style={{ fontSize: '1.8rem' }} />
+            <PiUserThin style={{ fontSize: '2.2rem' }} />
             <ul className='nav-profile-dropdown'>
               <li onClick={() => navigate('/myorders')}>Orders</li>
               <hr />
@@ -131,12 +131,12 @@ export const Navbar = ({ setShowLogin, searchTerm, setSearchTerm }) => {
           </div>
         )}
         <Link to='/cart' style={{ textDecoration: 'none' }}>
-          <PiShoppingCartSimpleThin style={{ fontSize: '1.8rem', color: 'black' }} />
+          <PiShoppingCartSimpleThin style={{ fontSize: '2.2rem', color: 'black' }} />
         </Link>
         <div className='cart-count'>{getTotalCartItems()}</div>
       </div>
       <RxHamburgerMenu
-        style={{ fontSize: '1.3rem', color: 'black' }}
+        style={{ fontSize: '1.8rem', color: 'black' }}
         onClick={dropdown_toggle}
         className='nav-dropdown'
         

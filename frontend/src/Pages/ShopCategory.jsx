@@ -79,7 +79,6 @@ export const ShopCategory = (props) => {
             <option value="name-asc">Name: A to Z</option>
             <option value="name-desc">Name: Z to A</option>
           </select>
-          {/* <TfiAngleDown className='dropdown'/> */}
         </div>
       </div>
       <div className="shopcategory-products">
