@@ -4,6 +4,16 @@
   text-align: center;
 
 }
+
+button:focus, a:focus, input:focus {
+  outline: none;
+}
+
+.btn:focus {
+  outline: none; /* Remove the blue outline */
+
+}
+
 .icons {
   display: inline-block;
 }

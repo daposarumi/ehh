@@ -5,7 +5,7 @@ import { Item } from '../Items/Items'
 
 export const Borokinni = () => {
   return (
-    <div className='borokinni'>
+    <div id="borokinni" className='borokinni'>
         <h1>BOROKINNI</h1>
         <hr/>
         <div className='collections'>

@@ -25,7 +25,7 @@ export const Footer = () => {
                 <FaFacebook style={{ fontSize: '1.2rem', color: 'white' }}/>    
             </div>
             <div>
-                <FaWhatsapp style={{ fontSize: '1.2rem', color: 'white' }}/>    
+                <a href="https://wa.me/c/2349084574434"><FaWhatsapp style={{ fontSize: '1.2rem', color: 'white' }}/></a>  
             </div>      
         </div>
         <div className="footer-copyright">
