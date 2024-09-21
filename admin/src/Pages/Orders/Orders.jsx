@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const handleDownload = () => {
     axios({
-      url: 'http://localhost:4000/api/download-subscribers', // API endpoint to download the file
+      url: 'https://panache-backend.onrender.com/api/download-subscribers', // API endpoint to download the file
       method: 'GET',
       responseType: 'blob', // Important: Handle the response as a binary blob
     }).then((response) => {
