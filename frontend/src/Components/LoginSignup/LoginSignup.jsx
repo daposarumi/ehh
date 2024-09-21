@@ -158,7 +158,7 @@ export const LoginSignup = ({ setShowLogin, initialState = "Sign Up" }) => {
 
                 {currState === "Login" ? (
                     <>
-                        <p className="forgot-password">
+                        <p className="loginsignup-login">
                             Forgot password? <span className="clickable" onClick={onForgotPassword}>
                                 {otpLoading ? <div className="loading-indicator"></div> : 'Reset'}
                             </span>

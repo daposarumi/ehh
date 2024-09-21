@@ -123,32 +123,39 @@
         font-size: 14px;
     }
 }
-
 @media (max-width: 768px) {
     .cartitems {
         margin: 20px;
     }
 
-    /* Hide the main grid structure for mobile */
+    /* Keep the main grid structure hidden on mobile */
     .cartitems-format-main {
-        display: none;
+        display: none; /* No change here */
     }
 
-    /* Mobile layout: make each cart item have its own flexible layout */
+    /* Mobile layout: make each cart item have a flexible layout */
     .cartitems-format {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap; /* Allow items to wrap to the next line */
         gap: 10px;
         padding: 10px 0;
         border-bottom: 1px solid #e2e2e2;
     }
 
-    /* First row: image and product name on the same line */
+    /* Two elements per line */
+    .cart-row {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        flex: 1 1 50%; /* Each item takes 50% of the width */
+    }
+
     .cart-image-name {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 10px;
+        width: 100%;
     }
 
     .cart-image-name img {
@@ -157,12 +164,13 @@
         object-fit: cover;
     }
 
-    /* Second row: size and remove icon on the same line */
-    .cart-size-remove {
+    .cart-size-remove,
+    .cart-quantity-price {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 5px;
+        width: 100%;
+        flex: 1 1 50%; /* Each item takes up half the row */
     }
 
     .cart-size-remove p {
@@ -175,14 +183,7 @@
         cursor: pointer;
     }
 
-    /* Third row: quantity and price on the same line */
-    .cart-quantity-price {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 5px;
-    }
-
+    /* Quantity and price row */
     .item-counter {
         display: flex;
         align-items: center;
@@ -191,6 +192,16 @@
     .item-counter span {
         font-size: 16px;
         margin: 0 5px;
+    }
+
+    /* Last row: button and total price */
+    .cart-footer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #e2e2e2;
     }
 
     /* Adjustments to button and font sizes */

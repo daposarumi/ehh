@@ -128,8 +128,8 @@ export const PlaceOrder = () => {
       </div>
       <div className="place-order-right">
         <div className="cartitems-total">
-          <h2 className='title'>Cart Total</h2>
-          <div>
+          <p className='title'>Cart Total</p>
+          <div className="bottom">
             <div className="cartitems-total-item">
               <p>Subtotal</p>
               <p>&#8358;{getTotalCartAmount()}</p>
