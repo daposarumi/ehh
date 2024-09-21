@@ -10,12 +10,12 @@ export const Verify = () => {
     const success = searchParams.get("success")
     const orderId = searchParams.get("orderId")
 
-    const { urla } = useContext(ShopContext)
+    const { url } = useContext(ShopContext)
     const navigate = useNavigate();
 
     useEffect(() => {
         const verifyPayment = async () => {
-            const response = await axios.post(urla + "/api/order/verify", { success, orderId })
+            const response = await axios.post(url + "/api/order/verify", { success, orderId })
             if (response.data.success) {
                 navigate("/myorders")
             } else {
@@ -24,7 +24,7 @@ export const Verify = () => {
         }
 
         verifyPayment();
-    }, [success, orderId, urla, navigate]) // Added dependencies
+    }, [success, orderId, url, navigate]) // Added dependencies
 
     console.log(success, orderId);
     return (

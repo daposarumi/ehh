@@ -27,7 +27,7 @@ const ShopContextProvider = (props) => {
 
     const [cartItems, setCartItems] = useState(getDefaultCart());
     const url = "https://panache-backend.onrender.com"
-    const urla = "https://admin-l4ne.onrender.com"
+    
     const [token, setToken] = useState("")
     const [userId, setUserId] = useState(null);
 
@@ -367,7 +367,7 @@ const ShopContextProvider = (props) => {
 
     
 
-    const contextValue = {setCartItems, urla, getTotalCartItems, clearCart, getTotalCartAmount, all_products, cartItems, addToCart, removeFromCart, url, token, setToken, userId};
+    const contextValue = {setCartItems, getTotalCartItems, clearCart, getTotalCartAmount, all_products, cartItems, addToCart, removeFromCart, url, token, setToken, userId};
 
     return (
         <ShopContext.Provider value={contextValue}>
