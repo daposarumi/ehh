@@ -71,7 +71,7 @@ const placeOrder = async (req, res) => {
         console.log('Paystack Request Payload:', {
             email,
             amount: totalAmount,
-            callback_url: `${process.env.FRONTEND_URL}/verify?orderId=${newOrder._id}&success=true`,
+            callback_url: `${process.env.FRONTENDA_URL}/verify?orderId=${newOrder._id}&success=true`,
             metadata: {
                 orderId: newOrder._id.toString(),
                 items: line_items.map(item => item.name).join(', ')
@@ -85,7 +85,7 @@ const placeOrder = async (req, res) => {
             {
                 email, // Ensure email is included
                 amount: totalAmount,
-                callback_url: `${process.env.FRONTEND_URL}/verify?orderId=${newOrder._id}&success=true`,
+                callback_url: `${process.env.FRONTENDA_URL}/verify?orderId=${newOrder._id}&success=true`,
                 metadata: {
                     orderId: newOrder._id.toString(),
                     items: line_items.map(item => item.name).join(', ')
@@ -108,86 +108,6 @@ const placeOrder = async (req, res) => {
 };
 
 
-// const placeOrder = async (req, res) => {
-//     const { userId, items, address } = req.body;
-//     const { email } = address;
-
-//     // Log received items to check their structure and prices
-//     console.log('Received items:', items);
-
-//     try {
-//         // Calculate total amount directly here, including delivery charge
-//         const itemsTotalAmount = calculateTotalAmount(items);
-//         const deliveryCharge = 600000; // 6000 NGN in kobo
-//         const totalAmount = itemsTotalAmount + deliveryCharge;
-
-//         // Save the new order to the database
-//         const newOrder = new orderModel({
-//             userId,
-//             items,
-//             amount: totalAmount, // Store total amount including delivery charge
-//             address
-//         });
-//         await newOrder.save();
-
-//         // Clear the user's cart after placing the order
-//         await userModel.findByIdAndUpdate(userId, { cartData: {} });
-
-//         // Prepare line_items array for Paystack
-//         const line_items = items.map(item => ({
-//             name: item.name,
-//             amount: item.price * 100, // Convert price to kobo
-//             quantity: item.quantity || 1, // Default quantity to 1 if not provided
-//             currency: 'NGN' // Nigerian Naira
-//         }));
-
-//         // Add delivery charge as a separate line item
-//         line_items.push({
-//             name: 'Delivery Charges',
-//             amount: deliveryCharge,
-//             quantity: 1,
-//             currency: 'NGN' // Nigerian Naira
-//         });
-
-//         // Log the request payload to Paystack
-//         console.log('Paystack Request Payload:', {
-//             email,
-//             amount: totalAmount,
-//             callback_url: `${process.env.FRONTEND_URL}/verify?orderId=${newOrder._id}&success=true`,
-//             metadata: {
-//                 orderId: newOrder._id.toString(),
-//                 items: line_items.map(item => item.name).join(', ')
-//             },
-//             line_items
-//         });
-
-//         // Initialize transaction with Paystack
-//         const response = await axios.post(
-//             'https://api.paystack.co/transaction/initialize',
-//             {
-//                 email, // Ensure email is included
-//                 amount: totalAmount,
-//                 callback_url: `${process.env.FRONTEND_URL}/verify?orderId=${newOrder._id}&success=true`,
-//                 metadata: {
-//                     orderId: newOrder._id.toString(),
-//                     items: line_items.map(item => item.name).join(', ')
-//                 },
-//                 line_items
-//             },
-//             {
-//                 headers: {
-//                     Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`
-//                 }
-//             }
-//         );
-
-//         // Return Paystack transaction initialization response
-//         res.json({ success: true, session_url: response.data.data.authorization_url });
-//     } catch (error) {
-//         console.error('Error placing order with Paystack:', error.response ? error.response.data : error.message);
-//         res.status(500).json({ success: false, message: error.message });
-//     }
-// };
 
 // Helper function to calculate total amount from items
 const calculateTotalAmount = (items) => {
@@ -223,15 +143,7 @@ try {
 }
 }
 
-// const userOrders = async (req,res) => {
-//     try {
-//         const orders = await orderModel.find({userId:req.body.userId});
-//         res.json({success:true,data:orders})
-//     } catch (error) {
-//         console.log(error);
-//         res.json({success:false,meessage:"Error"})
-//     }
-// }
+
 
 
 
