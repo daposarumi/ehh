@@ -71,7 +71,7 @@ const placeOrder = async (req, res) => {
         console.log('Paystack Request Payload:', {
             email,
             amount: totalAmount,
-            callback_url: `${process.env.FRONTENDA_URL}/verify?orderId=${newOrder._id}&success=true`,
+            callback_url: `${process.env.FRONTEND_URL}/verify?orderId=${newOrder._id}&success=true`,
             metadata: {
                 orderId: newOrder._id.toString(),
                 items: line_items.map(item => item.name).join(', ')
@@ -85,7 +85,7 @@ const placeOrder = async (req, res) => {
             {
                 email, // Ensure email is included
                 amount: totalAmount,
-                callback_url: `${process.env.FRONTENDA_URL}/verify?orderId=${newOrder._id}&success=true`,
+                callback_url: `${process.env.FRONTEND_URL}/verify?orderId=${newOrder._id}&success=true`,
                 metadata: {
                     orderId: newOrder._id.toString(),
                     items: line_items.map(item => item.name).join(', ')
