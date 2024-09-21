@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173'];
+const allowedOrigins = ['https://panachebyfunmi.onrender.com', 'https://admin-l4ne.onrender.com'];
 
 const corsOptions = {
     origin: function (origin, callback) {
