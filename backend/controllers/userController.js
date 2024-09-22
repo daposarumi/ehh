@@ -110,7 +110,7 @@ const registerUser = async (req, res) => {
         const mailOptions = {
             from: process.env.OUTLOOK_EMAIL,
             to: user.email,
-            subject: 'Welcome to Our Service!',
+            subject: 'Welcome to PBF!',
             html: `<p>Hi ${name},</p><p>Thank you for registering with us!</p><p>We're glad to have you on board.</p>`,
         };
 
