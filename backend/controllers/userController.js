@@ -63,6 +63,8 @@ const loginUser = async (req, res) => {
 };
 
 // Register user
+
+
 const registerUser = async (req, res) => {
     const { name, password, email } = req.body;
     try {
@@ -90,12 +92,70 @@ const registerUser = async (req, res) => {
 
         const user = await newUser.save();
         const token = createToken(user._id);
+        
+        // Send welcome email
+        const transporter = nodemailer.createTransport({
+            host: 'mail.panachebyfunmi.com',
+            port: 465,
+            secure: true, // true for 465, false for other ports
+            auth: {
+                user: process.env.OUTLOOK_EMAIL,
+                pass: process.env.OUTLOOK_PASSWORD,
+            },
+            tls: {
+                rejectUnauthorized: false,
+            },
+        });
+
+        const mailOptions = {
+            from: process.env.OUTLOOK_EMAIL,
+            to: user.email,
+            subject: 'Welcome to Our Service!',
+            html: `<p>Hi ${name},</p><p>Thank you for registering with us!</p><p>We're glad to have you on board.</p>`,
+        };
+
+        await transporter.sendMail(mailOptions);
+
         res.status(201).json({ success: true, token });
     } catch (error) {
         console.error('Registration error:', error);
         res.status(500).json({ success: false, message: "Internal server error" });
     }
 };
+
+// const registerUser = async (req, res) => {
+//     const { name, password, email } = req.body;
+//     try {
+//         const exists = await userModel.findOne({ email });
+//         if (exists) {
+//             return res.status(400).json({ success: false, message: "User already exists" });
+//         }
+
+//         if (!validator.isEmail(email)) {
+//             return res.status(400).json({ success: false, message: "Invalid email address" });
+//         }
+
+//         if (password.length < 8) {
+//             return res.status(400).json({ success: false, message: "Password must be at least 8 characters long" });
+//         }
+
+//         const salt = await generateSalt();
+//         const hashedPassword = `${salt}:${await hashPassword(password, salt)}`;
+
+//         const newUser = new userModel({
+//             name,
+//             email,
+//             password: hashedPassword
+//         });
+
+//         const user = await newUser.save();
+//         const token = createToken(user._id);
+//         res.status(201).json({ success: true, token });
+//     } catch (error) {
+//         console.error('Registration error:', error);
+//         res.status(500).json({ success: false, message: "Internal server error" });
+//     }
+// };
 
 // Forgot password
 const forgotPassword = async (req, res) => {
