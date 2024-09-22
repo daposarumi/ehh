@@ -4,6 +4,17 @@
     gap: 30px;
 }
 
+.added-to-cart-message {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #00A8BA; /* Customize as needed */
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    transition: opacity 0.5s ease;
+}
+
+
 .productdisplay-left {
     display: flex;
     flex-direction: column;

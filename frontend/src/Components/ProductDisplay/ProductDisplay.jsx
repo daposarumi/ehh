@@ -2,27 +2,28 @@ import React, { useState, useContext } from 'react';
 import './ProductDisplay.css';
 import { ShopContext } from '../../Context/ShopContext';
 
-
 export const ProductDisplay = (props) => {
     const { product } = props;
     const { addToCart } = useContext(ShopContext);
     
-    // State for selected size
     const [selectedSize, setSelectedSize] = useState('');
+    const [showMessage, setShowMessage] = useState(false); // State for showing the message
 
-    // Function to handle size selection
     const handleSizeSelect = (size) => {
         setSelectedSize(size);
-    }
+    };
 
-    // Function to add to cart with selected size
     const handleAddToCart = () => {
         if (!selectedSize) {
             alert("Please select a size before adding to the cart.");
         } else {
-            addToCart(product.id, selectedSize);  // Pass product ID and selected size
+            addToCart(product.id, selectedSize);
+            setShowMessage(true); // Show the message
+            setTimeout(() => {
+                setShowMessage(false); // Hide the message after 2 seconds
+            }, 2000);
         }
-    }
+    };
 
     return (
         <div className='productdisplay'>
@@ -58,8 +59,14 @@ export const ProductDisplay = (props) => {
 
                 {/* Add to Cart Button */}
                 <button onClick={handleAddToCart}>ADD TO CART</button>
+
+                {/* Added to Cart Message */}
+                {showMessage && (
+                    <div className="added-to-cart-message">
+                        Added to cart!
+                    </div>
+                )}
             </div>
-            
         </div>
     );
-}
+};
