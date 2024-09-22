@@ -8,8 +8,7 @@ export const Shop = () => {
     <div>
         <Hero/>
         <Borokinni/>
-        <Newsletter/>
-        
+        <Newsletter/>     
     </div>
   )
 }

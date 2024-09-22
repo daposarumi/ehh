@@ -24,7 +24,7 @@ export const Verify = () => {
         }
 
         verifyPayment();
-    }, [success, orderId, url, navigate]) // Added dependencies
+    }, [success, orderId, url, navigate]) 
 
     console.log(success, orderId);
     return (

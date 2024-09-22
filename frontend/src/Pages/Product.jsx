@@ -14,7 +14,6 @@ export const Product = () => {
     <div>
       <Breadcrumbs product={product} />
       <ProductDisplay product={product} />
-      
       <RelatedProduct currentCategory={product.category} currentProductId={product.id} />
     </div>
   );

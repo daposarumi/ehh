@@ -6,14 +6,6 @@ import {jwtDecode} from 'jwt-decode';
 
 export const ShopContext = createContext(null);
 
-// const getDefaultCart = () =>{
-//     let cart = {};
-//     for (let index = 0; index < all_products.length+1; index++) {
-//         cart[index] = 0;
-        
-//     }
-//     return cart;
-// }
 
 const getDefaultCart = () => {
     let cart = {};
@@ -30,38 +22,6 @@ const ShopContextProvider = (props) => {
     
     const [token, setToken] = useState("")
     const [userId, setUserId] = useState(null);
-
-
-    
-    // const addToCart = async (itemId) => {
-    //     if (!itemId) {
-    //         console.error('Invalid itemId');
-    //         return;
-    //     }
-    
-    //         setCartItems((prev) => ({
-    //             ...prev,
-    //         [itemId]: (prev[itemId] || 0) + 1,  // Initialize to 0 if undefined, then increment
-    //         }));
-    
-    //     if (token) {
-    //         try {
-    //             await axios.post(
-    //                 `${url}/api/cart/add`,
-    //                 { itemId },
-    //                 {
-    //                     headers: {
-    //                         Authorization: `Bearer ${token}`,
-    //                     },
-    //                 }
-    //             );
-    //         } catch (error) {
-    //             console.error('Add to cart error:', error.response?.data || error.message);
-    //         }
-    //     } else {
-    //         console.error('No token available');
-    //     }
-    // };
     
 
     const addToCart = async (itemId, size) => {
@@ -116,26 +76,6 @@ const ShopContextProvider = (props) => {
         }
     };
     
-    
-    
-    
-
-        
-
-    // const removeFromCart = async (itemId) => {
-    //     setCartItems((prev) => {
-    //         const newCartItems = { ...prev };
-    //         if (newCartItems[itemId] > 1) {
-    //             newCartItems[itemId] -= 1;
-    //         } else {
-    //             delete newCartItems[itemId];
-    //         }
-    //         return newCartItems;
-    //     });
-    //     if (token) {
-    //         await axios.post(url+"/api/cart/remove",{itemId},{headers:{token}})
-    //     }
-    // };
 
 
     const removeFromCart = async (itemId, size) => {
@@ -199,29 +139,6 @@ const ShopContextProvider = (props) => {
         }
     };
     
-    
-    
-    
-
-    
-    
-
-        // const clearCart = async (itemId) => {
-        //     setCartItems((prevCartItems) => {
-        //         const updatedCartItems = { ...prevCartItems };
-        //         delete updatedCartItems[itemId];
-        //         return updatedCartItems;
-        //     });
-        
-        //     if (token) {
-        //         try {
-        //             await axios.post(url + "/api/cart/clear", { itemId }, { headers: { token } });
-        //             console.log("Product removed from cart successfully.");
-        //         } catch (error) {
-        //             console.error("Error removing product from cart:", error);
-        //         }
-        //     }
-        // };
 
 
         const clearCart = async (itemId, size) => {
@@ -276,42 +193,6 @@ const ShopContextProvider = (props) => {
         };
         
 
-    // const getTotalCartAmount = () => {
-    //     let totalAmount = 0;
-    //     for (const item in cartItems) {
-    //         if (cartItems[item] > 0) {
-    //             let itemInfo = all_products.find((product) => product.id === Number(item));
-    //             if (itemInfo) {
-    //                 totalAmount += itemInfo.price * cartItems[item];
-    //             }
-    //         }
-    //     }
-    //     return totalAmount;
-    // }
-
-    // const getTotalCartAmount = () => {
-    //     return Object.entries(cartItems).flatMap(([itemId, entries]) => 
-    //         entries.map(entry => {
-    //             const itemInfo = all_products.find(product => product.id === Number(itemId));
-    //             return itemInfo ? itemInfo.price * entry.quantity : 0;
-    //         })
-    //     ).reduce((total, amount) => total + amount, 0);
-    // };
-    
-    
-    
-
-    // const getTotalCartItems = () =>{
-    //     let totalItem = 0;
-    //     for (const item in cartItems) {
-    //         if (cartItems[item]>0)
-    //         {
-    //             totalItem += cartItems[item];
-    //         }
-            
-    //     }
-    //     return totalItem;
-    // }
 
 
     const getTotalCartItems = () => {
