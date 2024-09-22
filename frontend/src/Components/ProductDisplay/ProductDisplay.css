@@ -5,14 +5,23 @@
 }
 
 .added-to-cart-message {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #00A8BA; /* Customize as needed */
+    position: fixed; /* Position it at the top of the page */
+    top: 20px; /* Distance from the top */
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Adjust for center alignment */
+    padding: 8px 12px; /* Smaller padding */
+    background-color: rgb(61, 102, 61); /* Set background color to green */
     color: white;
     border-radius: 5px;
     text-align: center;
     transition: opacity 0.5s ease;
+    font-size: 14px; /* Adjust font size if needed */
+    z-index: 1000; /* Ensure it appears above other elements */
 }
+
+
+
+
 
 
 .productdisplay-left {
