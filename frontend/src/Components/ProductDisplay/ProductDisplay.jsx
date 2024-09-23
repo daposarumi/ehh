@@ -38,7 +38,7 @@ export const ProductDisplay = (props) => {
                     <div className="price">&#8358;{product.price.toLocaleString()}</div>
                 </div>
                 <div className="productdisplay-right-desc">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea officia, obcaecati iure culpa eveniet rem laboriosam tempore autem at excepturi odit dolorem eius eligendi doloribus dicta cumque perferendis! Blanditiis, aut.
+                   {product.description}
                 </div>
 
                 {/* Size Selection */}

@@ -26,15 +26,15 @@
     margin: 10px 0; /* Add vertical margin for spacing */
 }
 
-.relatedproducts-item {
-    display: flex;
-    flex-wrap: wrap; /* Allow wrapping for responsive layout */
-    gap: 20px; /* Adjust gap for better spacing */
-    width: 100%; /* Make item container full width */
-    max-width: 1200px; /* Limit maximum width */
-    justify-content: center; /* Center items horizontally */
-}
 
+
+.relatedproducts-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 70px;
+}
 /* Adjust the size of items in the related products section */
 .relatedproducts-item .item {
     flex: 1 1 calc(33.333% - 20px); /* Adjust item size */
@@ -48,9 +48,8 @@
     }
 
     .relatedproducts-item {
-        flex-direction: column; /* Stack items vertically on smaller screens */
-        align-items: center; /* Center items horizontally */
-    }
+        grid-template-columns: 1fr; /* Stacks the columns vertically on smaller screens */
+      }
 
     .relatedproducts-item .item {
         flex: 1 1 100%; /* Make items full width */
