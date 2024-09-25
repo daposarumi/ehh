@@ -17,7 +17,7 @@ export const Newsletter = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:4000/api/subscribe', { email });
+      const response = await axios.post('https://panache-backend.onrender.com/api/subscribe', { email });
       setMessage(response.data.message);
       setEmail('');
     } catch (error) {
