@@ -106,7 +106,7 @@ export const CartItems = () => {
                                     <p>Subtotal</p>
                                     <p>&#8358;{getTotalCartAmount().toLocaleString()}</p>
                                 </div>
-                                <hr />
+                                <hr/>
                                 <div className="cartitems-total-item">
                                     <p>Shipping Fee</p>
                                     <p>&#8358;{getTotalCartAmount() === 0 ? 0 : 6000}</p>

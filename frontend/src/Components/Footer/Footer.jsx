@@ -6,6 +6,13 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
 
 export const Footer = () => {
+
+    const scrollToBorokinni = () => {
+        const borokinniSection = document.getElementById('borokinni');
+        if (borokinniSection) {
+          borokinniSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
   return (
     <div className='footer'>
         <div className='footerlogo'>
@@ -13,8 +20,8 @@ export const Footer = () => {
         </div>
         <ul className='footer-links'>
             <li>About</li>
-            <li>Contact</li>
-            <li>Products</li>
+            {/* <li>Contact</li> */}
+            <li onClick={scrollToBorokinni}>Products</li>
             <li>Company</li>
         </ul>
         <div className='footer-icons'>
@@ -22,7 +29,7 @@ export const Footer = () => {
                 <a href="https://www.instagram.com/panachebyfunmi?igsh=dHJ5NmR6ejc2NG84 "><FaInstagram style={{ fontSize: '1.2rem', color: 'white' }}/></a> 
             </div>
             <div>
-                <FaFacebook style={{ fontSize: '1.2rem', color: 'white' }}/>    
+                <a href="https://web.facebook.com/pinekitchen/about"><FaFacebook style={{ fontSize: '1.2rem', color: 'white' }}/></a>  
             </div>
             <div>
                 <a href="https://wa.me/c/2349084574434"><FaWhatsapp style={{ fontSize: '1.2rem', color: 'white' }}/></a>  

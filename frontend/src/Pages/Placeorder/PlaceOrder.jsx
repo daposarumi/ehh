@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
 import './PlaceOrder.css';
+import "../../Components/Cartitems/CartItems.css"
 import axios from 'axios';
 
 export const PlaceOrder = () => {
@@ -109,7 +110,7 @@ export const PlaceOrder = () => {
   return (
     <form onSubmit={placeOrder} className='place-order'>
       <div className="place-order-left">
-        <p className="title">Delivery information</p>
+        <h1 className="title">Delivery information</h1>
         <div className="multi-fields">
           <input name='firstName' onChange={onChangeHandler} value={data.firstName} type="text" placeholder='First Name' required />
           <input name='lastName' onChange={onChangeHandler} value={data.lastName} type="text" placeholder='Last Name' required />
@@ -126,10 +127,10 @@ export const PlaceOrder = () => {
         </div>
         <input name='phone' onChange={onChangeHandler} value={data.phone} type="tel" placeholder='Phone' required />
       </div>
-      <div className="place-order-right">
+      <div className="cartitems-down">
         <div className="cartitems-total">
-          <p className='title'>Cart Total</p>
-          <div className="bottom">
+          <h1 >Cart Total</h1>
+          <div >
             <div className="cartitems-total-item">
               <p>Subtotal</p>
               <p>&#8358;{getTotalCartAmount()}</p>
@@ -145,7 +146,7 @@ export const PlaceOrder = () => {
               <p className='bold'>&#8358;{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 6000}</p>
             </div>
           </div>
-          <button className="cart-total" type="submit">PROCEED TO PAYMENT</button>
+          <button type="submit">PROCEED TO PAYMENT</button>
         </div>
       </div>
     </form>
