@@ -10,6 +10,11 @@
     margin-bottom: 10px;
    
   }
+
+  .terms {
+    text-decoration: underline;
+    cursor: pointer;
+}
   
   .privacy-policy h2 {
     font-size: 1.5em;

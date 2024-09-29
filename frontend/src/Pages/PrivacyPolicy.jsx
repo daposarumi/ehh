@@ -82,7 +82,7 @@ const PrivacyPolicy = () => {
 
       <h2>10. Contact Us</h2>
       <p>
-        If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:info@panachebyfunmi.com">info@panachebyfunmi.com</a>.
+        If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:info@panachebyfunmi.com" className='terms'>info@panachebyfunmi.com</a>.
       </p>
     </div>
   );
