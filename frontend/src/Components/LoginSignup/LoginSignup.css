@@ -28,6 +28,9 @@
     background-color: #F5F5F5;
     animation: fadeIn 0.5s;
 }
+.terms {
+    text-decoration: underline;
+}
 
 .popup-condition {
     display: flex;

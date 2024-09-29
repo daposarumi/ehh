@@ -105,6 +105,12 @@ export const LoginSignup = ({ setShowLogin, initialState = "Sign Up" }) => {
         setPasswordVisible(prev => !prev);
     };
 
+    // Function to handle privacy policy link click
+    const handlePrivacyPolicyClick = () => {
+        setShowLogin(false); // Close the modal
+        navigate('/privacy-policy'); // Navigate to the privacy policy page
+    };
+
     return (
         <div className="loginsignup">
             <form onSubmit={onSubmitHandler} className="loginsignup-container">
@@ -153,7 +159,7 @@ export const LoginSignup = ({ setShowLogin, initialState = "Sign Up" }) => {
 
                 <div className="popup-condition">
                     <input type="checkbox" required />
-                    <p>By continuing, I agree to the <Link to="/privacy-policy" >terms of use & privacy policy</Link></p>
+                    <p>By continuing, I agree to the <span className='terms' onClick={handlePrivacyPolicyClick}>terms of use & privacy policy</span></p>
                 </div>
 
                 {currState === "Login" ? (
