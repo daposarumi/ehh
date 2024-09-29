@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Newsletter.css';
 import axios from 'axios';
 
@@ -7,12 +6,10 @@ export const Newsletter = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   
-  // For demo purposes, assume "isAdmin" determines if the user is an admin
-  // Set to false for regular users
-
   const handleSubscribe = async () => {
     if (!email) {
       setMessage('Please enter a valid email address.');
+      clearMessageAfterDelay(); // Clear the message after a few seconds
       return;
     }
 
@@ -24,9 +21,16 @@ export const Newsletter = () => {
       console.error('Subscription error:', error.response ? error.response.data : error.message);
       setMessage('Failed to subscribe. Please try again later.');
     }
+
+    clearMessageAfterDelay(); // Clear the message after a few seconds
   };
 
- 
+  // Function to clear the message after a delay
+  const clearMessageAfterDelay = () => {
+    setTimeout(() => {
+      setMessage('');
+    }, 4000); // 3000ms = 3 seconds
+  };
 
   return (
     <div className='newsletter'>
@@ -42,7 +46,6 @@ export const Newsletter = () => {
         <button onClick={handleSubscribe}>Subscribe</button>
       </div>
       {message && <p>{message}</p>}
-
     </div>
   );
 };
