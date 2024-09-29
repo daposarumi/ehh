@@ -30,6 +30,7 @@
 }
 .terms {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .popup-condition {
