@@ -1,6 +1,8 @@
 import './App.css';
 import React, { useState } from 'react';
+
 import { Navbar } from './Components/Navbar/Navbar';
+import PrivacyPolicy from './Pages/PrivacyPolicy';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Cart } from './Pages/Cart';
 import { Product } from './Pages/Product';
@@ -43,6 +45,7 @@ function App() {
       <div className='app'>
         <Routes>
           <Route path='/' element={<Shop />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy/>} />
           <Route path='/women' element={<ShopCategory category="Women" />} />
           <Route path='/men' element={<ShopCategory category="Men" />} />
           <Route path='/product/:productId' element={<Product />} />

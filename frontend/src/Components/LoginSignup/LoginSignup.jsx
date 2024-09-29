@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import "./LoginSignup.css";
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate, Link } from 'react-router-dom'; 
 import { RxCross1 } from "react-icons/rx";
 import axios from 'axios';
 import { ShopContext } from '../../Context/ShopContext';
@@ -153,7 +153,7 @@ export const LoginSignup = ({ setShowLogin, initialState = "Sign Up" }) => {
 
                 <div className="popup-condition">
                     <input type="checkbox" required />
-                    <p>By continuing, I agree to the terms of use & privacy policy</p>
+                    <p>By continuing, I agree to the <Link to="/privacy-policy" >terms of use & privacy policy</Link></p>
                 </div>
 
                 {currState === "Login" ? (
