@@ -7,11 +7,25 @@ export const Newsletter = () => {
   const [message, setMessage] = useState('');
   const [showMessage, setShowMessage] = useState(false);
 
+  // Email validation regex
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSubscribe = async () => {
+    // Check if the email is valid
     if (!email) {
+      setMessage('Please enter an email address.');
+      setShowMessage(true);
+      clearMessageAfterDelay();
+      return;
+    }
+    
+    if (!validateEmail(email)) {
       setMessage('Please enter a valid email address.');
-      setShowMessage(true);  // Set to show message
-      clearMessageAfterDelay(); // Clear the message after a few seconds
+      setShowMessage(true);
+      clearMessageAfterDelay();
       return;
     }
 
