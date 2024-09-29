@@ -117,21 +117,56 @@ const updateExcelFile = (email) => {
 };
 
 
-app.post('/api/subscribe', (req, res) => {
-    const { email } = req.body;
-  
-    if (!email) {
-      return res.status(400).json({ message: 'Email is required.' });
-    }
-  
-    try {
-      updateExcelFile(email);
-      res.json({ message: 'Subscription successful!' });
-    } catch (error) {
-      console.error('Error updating Excel file:', error);
-      res.status(500).json({ message: 'Failed to subscribe.' });
-    }
-  });
+const transporter = nodemailer.createTransport({
+  host: 'mail.panachebyfunmi.com',
+  port: 465,
+  secure: true, // true for 465, false for other ports
+  auth: {
+      user: process.env.OUTLOOK_EMAIL,
+      pass: process.env.OUTLOOK_PASSWORD,
+  },
+  tls: {
+      rejectUnauthorized: false,
+  },
+});
+
+
+app.post('/api/subscribe', async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ message: 'Email is required.' });
+  }
+
+  try {
+    // Update your Excel file or perform other subscription logic
+    updateExcelFile(email);
+
+    // Sending the "Thank you" email using Nodemailer
+    const mailOptions = {
+      from: process.env.OUTLOOK_EMAIL,  // Sender email
+      to: email,                               // Recipient email
+      subject: 'Thank you for signing up for our newsletter!',
+      text: 'Thank you for subscribing to our newsletter. Stay tuned for updates and offers!',
+      html: `<p>Hi,</p><p>Thank you for subscribing to our newsletter. Stay tuned for updates and offers!</p>`, // HTML email body
+    };
+
+    // Send email
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending email:', error);
+        return res.status(500).json({ message: 'Failed to send confirmation email.' });
+      }
+      console.log('Email sent:', info.response);
+    });
+
+    // Respond with success message
+    res.json({ message: 'Subscription successful!' });
+  } catch (error) {
+    console.error('Error during subscription:', error);
+    res.status(500).json({ message: 'Failed to subscribe.' });
+  }
+});
   
   app.get('/api/download-subscribers', (req, res) => {
     const filePath = path.join(__dirname, 'subscribers.xlsx');
