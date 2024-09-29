@@ -10,18 +10,21 @@ export const Newsletter = () => {
   // Email validation regex
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+    const isValid = emailRegex.test(email);
+    console.log(`Email validation for "${email}" result:`, isValid);  // Debugging output
+    return isValid;
   };
 
   const handleSubscribe = async () => {
-    // Check if the email is valid
+    // Check if the email is empty
     if (!email) {
       setMessage('Please enter an email address.');
       setShowMessage(true);
       clearMessageAfterDelay();
       return;
     }
-    
+
+    // Validate email format
     if (!validateEmail(email)) {
       setMessage('Please enter a valid email address.');
       setShowMessage(true);
