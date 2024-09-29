@@ -5,10 +5,12 @@ import axios from 'axios';
 export const Newsletter = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  
+  const [showMessage, setShowMessage] = useState(false);
+
   const handleSubscribe = async () => {
     if (!email) {
       setMessage('Please enter a valid email address.');
+      setShowMessage(true);  // Set to show message
       clearMessageAfterDelay(); // Clear the message after a few seconds
       return;
     }
@@ -16,10 +18,12 @@ export const Newsletter = () => {
     try {
       const response = await axios.post('https://panache-backend.onrender.com/api/subscribe', { email });
       setMessage(response.data.message);
-      setEmail('');
+      setEmail(''); // Clear the input field
+      setShowMessage(true);  // Show success message
     } catch (error) {
       console.error('Subscription error:', error.response ? error.response.data : error.message);
       setMessage('Failed to subscribe. Please try again later.');
+      setShowMessage(true);  // Show error message
     }
 
     clearMessageAfterDelay(); // Clear the message after a few seconds
@@ -28,9 +32,16 @@ export const Newsletter = () => {
   // Function to clear the message after a delay
   const clearMessageAfterDelay = () => {
     setTimeout(() => {
-      setMessage('');
-    }, 4000); // 3000ms = 3 seconds
+      setShowMessage(false);  // Hide the message
+    }, 4000); // 4 seconds delay
   };
+
+  // Cleanup timeout if component unmounts during timeout
+  useEffect(() => {
+    return () => {
+      clearTimeout(clearMessageAfterDelay);
+    };
+  }, []);
 
   return (
     <div className='newsletter'>
@@ -45,7 +56,7 @@ export const Newsletter = () => {
         />
         <button onClick={handleSubscribe}>Subscribe</button>
       </div>
-      {message && <p>{message}</p>}
+      {showMessage && <p>{message}</p>}
     </div>
   );
 };
