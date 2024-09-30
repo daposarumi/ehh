@@ -1,13 +1,27 @@
 import React, { useState, useContext, useEffect } from 'react';
 import "./LoginSignup.css";
-import { useNavigate, Link } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; 
 import { RxCross1 } from "react-icons/rx";
 import axios from 'axios';
 import { ShopContext } from '../../Context/ShopContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import jwtDecode from 'jwt-decode';  // Import jwt-decode to check token expiration
 
 const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+// Function to check if token is expired
+const isTokenExpired = (token) => {
+    try {
+        const { exp } = jwtDecode(token); // Decode the token and get expiration
+        if (Date.now() >= exp * 1000) {
+            return true; // Token has expired
+        }
+        return false;
+    } catch (error) {
+        return true; // If any error occurs, treat token as expired
+    }
+};
 
 export const LoginSignup = ({ setShowLogin, initialState = "Sign Up" }) => {
     const { url, setToken } = useContext(ShopContext);
@@ -18,6 +32,16 @@ export const LoginSignup = ({ setShowLogin, initialState = "Sign Up" }) => {
     const [loading, setLoading] = useState(false);
     const [otpLoading, setOtpLoading] = useState(false); // New state for OTP loading
     const navigate = useNavigate(); 
+
+    useEffect(() => {
+        // Check for token expiration on component load
+        const token = localStorage.getItem('token');
+        if (token && isTokenExpired(token)) {
+            localStorage.removeItem('token'); // Remove expired token
+            setToken(null); // Clear token in context
+            navigate('/login'); // Redirect to login page
+        }
+    }, [navigate, setToken]); // Dependencies
 
     useEffect(() => {
         setCurrState(initialState);
@@ -105,12 +129,6 @@ export const LoginSignup = ({ setShowLogin, initialState = "Sign Up" }) => {
         setPasswordVisible(prev => !prev);
     };
 
-    // Function to handle privacy policy link click
-    const handlePrivacyPolicyClick = () => {
-        setShowLogin(false); // Close the modal
-        navigate('/privacy-policy'); // Navigate to the privacy policy page
-    };
-
     return (
         <div className="loginsignup">
             <form onSubmit={onSubmitHandler} className="loginsignup-container">
@@ -159,7 +177,7 @@ export const LoginSignup = ({ setShowLogin, initialState = "Sign Up" }) => {
 
                 <div className="popup-condition">
                     <input type="checkbox" required />
-                    <p>By continuing, I agree to the <span className='terms' onClick={handlePrivacyPolicyClick}>terms of use & privacy policy</span></p>
+                    <p>By continuing, I agree to the terms of use & privacy policy</p>
                 </div>
 
                 {currState === "Login" ? (
