@@ -13,6 +13,7 @@ const createToken = (id, expiresIn = '1h') => {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn });
 };
 
+
 // Hash password using crypto
 const hashPassword = (password, salt) => {
     return new Promise((resolve, reject) => {
