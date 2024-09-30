@@ -6,7 +6,8 @@ import axios from 'axios';
 import { ShopContext } from '../../Context/ShopContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import jwt_decode, { JwtPayload } from 'jwt-decode';
+import  { jwtDecode } from 'jwt-decode';
+
 
 
 const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -14,8 +15,8 @@ const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 // Function to check if token is expired
 const isTokenExpired = (token) => {
     try {
-        // eslint-disable-next-line no-mixed-operators
-        const { exp } = jwt_decode<JwtPayload>(token); // Decode the token and get expiration
+       
+        const { exp } = jwtDecode(token); // Decode the token and get expiration
         if (Date.now() >= exp * 1000) {
             return true; // Token has expired
         }
