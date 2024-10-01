@@ -4,6 +4,7 @@ import footerlogo from '../Assets/white logo.png'
 import { FaInstagram } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
 
@@ -22,7 +23,7 @@ export const Footer = () => {
             <li>About</li>
             {/* <li>Contact</li> */}
             <li onClick={scrollToBorokinni}>Products</li>
-            <li>Company</li>
+            <li><Link to="privacy-policy">Company</Link></li>
         </ul>
         <div className='footer-icons'>
             <div>
