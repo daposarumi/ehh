@@ -180,7 +180,7 @@ export const LoginSignup = ({ setShowLogin, initialState = "Sign Up" }) => {
 
                 <div className="popup-condition">
                     <input type="checkbox" required />
-                    <p >By continuing, I agree to the <Link to="/privacy-policy">terms of use & privacy policy</Link></p>
+                    <p >By continuing, I agree to the <Link to="/privacy-policy" className='terms'>terms of use & privacy policy</Link></p>
                 </div>
 
                 {currState === "Login" ? (
