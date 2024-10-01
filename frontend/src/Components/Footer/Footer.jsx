@@ -20,14 +20,14 @@ export const Footer = () => {
             <img src={footerlogo} width="100" alt="logo"/>
         </div>
         <ul className='footer-links'>
-            <li>About</li>
-            {/* <li>Contact</li> */}
-            <li onClick={scrollToBorokinni}>Products</li>
+            <li> <a href="https://www.instagram.com/panachebyfunmi">About</a></li>
+           
+            <li ><Link to="/women">Products</Link></li>
             <li><Link to="privacy-policy">Company</Link></li>
         </ul>
         <div className='footer-icons'>
             <div>
-                <a href="https://www.instagram.com/panachebyfunmi?igsh=dHJ5NmR6ejc2NG84 "><FaInstagram style={{ fontSize: '1.2rem', color: 'white' }}/></a> 
+                <a href="https://www.instagram.com/panachebyfunmi"><FaInstagram style={{ fontSize: '1.2rem', color: 'white' }}/></a> 
             </div>
             <div>
                 <a href="https://web.facebook.com/pinekitchen/about"><FaFacebook style={{ fontSize: '1.2rem', color: 'white' }}/></a>  
