@@ -58,6 +58,7 @@ const corsOptions = {
     optionsSuccessStatus: 200,
     credentials: true
 };
+app.options('*', cors(corsOptions));  // Handles preflight for all routes
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json())
