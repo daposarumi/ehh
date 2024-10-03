@@ -47,7 +47,7 @@ p {
     background-size: cover;
 }
 
-/* @media (max-width: 1280px) {
+@media (max-width: 1280px) {
    
     .logo {
         width: 45px;
@@ -63,10 +63,7 @@ p {
     }
     .mobilebreak {display: none;}
 
-    body {
-        overflow-x: hidden;
-        text-align: center;
-    }
+ 
     .btn-primary {
         margin-bottom: 60px;
         padding: 12px 40px;
@@ -83,7 +80,7 @@ p {
         padding: 0 25px;
         font-size: 14px;
     }
-} */
+}
 
 @media (max-width: 800px) {
     h1{
