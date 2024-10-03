@@ -53,6 +53,10 @@ p {
         width: 45px;
         margin-top: 5px;
     }
+    .top {
+        padding-left: 60px;
+        margin-top: 70px;
+    }
     h1 {
         font-size: 50px;
         line-height: normal;
@@ -70,6 +74,14 @@ p {
         background-color: transparent;
         color:#068E7D;
         border:#068E7D solid 1px;
+    }
+    body {
+        overflow-x: hidden;
+       
+        
+    }
+    h1{
+        line-height: 1.2;
     }
     .btn-primary:hover {
         color: white;
