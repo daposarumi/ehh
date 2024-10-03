@@ -63,10 +63,7 @@ p {
     }
     .mobilebreak {display: none;}
 
-    body {
-        overflow-x: hidden;
-        text-align: center;
-    }
+  
     .btn-primary {
         margin-bottom: 60px;
         padding: 12px 40px;
@@ -90,6 +87,10 @@ p {
         line-height: 1.2;
         font-size: 40px;
         margin-bottom: 5px;
+    }
+    body {
+        overflow-x: hidden;
+        text-align: center;
     }
 }
 
