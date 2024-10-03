@@ -63,7 +63,10 @@ p {
     }
     .mobilebreak {display: none;}
 
- 
+    body {
+        overflow-x: hidden;
+        text-align: center;
+    }
     .btn-primary {
         margin-bottom: 60px;
         padding: 12px 40px;
