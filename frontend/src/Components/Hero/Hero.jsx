@@ -17,7 +17,7 @@ export const Hero = () => {
     <div class="row">
             <div class="col-lg-6 top">
                 <h1>The<br/> Bọ̀rọ̀kínní Collection</h1>
-                <p>an exquisite fusion of trendsetting designs, premium fabrics, <br class="mobilebreak"/>and timeless elegance</p>
+                <p>an exquisite fusion of trendsetting designs, premium fabrics, and timeless elegance</p>
                <button onClick={scrollToBorokinni} type="button" class="btn btn-primary">SHOP HERE</button>
             </div>
             <div class="col-lg-6 topimage">
