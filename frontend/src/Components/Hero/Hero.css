@@ -78,7 +78,7 @@ p {
 
 @media (max-width: 1025px) {
     p{
-        width: 90%;
+        font-size: 13px;
     }
     h1{
         font-size: 70px;
