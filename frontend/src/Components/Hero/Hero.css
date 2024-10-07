@@ -3,8 +3,6 @@ body {
     padding: 0;
     font-family: 'Quicksand', sans-serif;
     overflow-x: hidden; 
-    
-    text-align: center;
    
 }
 .btn-primary {
@@ -98,12 +96,10 @@ p {
     }
 
     .top {
-        margin: 0 auto;
+        padding-left: 0;
+        margin-top: 60px;
     }
-    body {
-        overflow-x: hidden;
-        text-align: center;
-    }
+  
 }
 
 /* @media (max-width: 500px) {
