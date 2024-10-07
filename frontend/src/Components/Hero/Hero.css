@@ -47,27 +47,13 @@ p {
     background-size: cover;
 }
 
-/* @media (max-width: 1280px) {
+@media (max-width: 1280px) {
    
-    .logo {
-        width: 45px;
-        margin-top: 5px;
-    }
-    .top {
-        padding-left: 60px;
-        margin-top: 70px;
-    }
+  
     h1 {
-        font-size: 50px;
+        font-size: 70px;
         line-height: normal;
     }
-    .top {
-        margin-top: 55px;
-        padding-left: 0;
-    }
-    .mobilebreak {display: none;}
-
-  
     .btn-primary {
         margin-bottom: 60px;
         padding: 12px 40px;
@@ -75,24 +61,15 @@ p {
         color:#068E7D;
         border:#068E7D solid 1px;
     }
-    body {
-        overflow-x: hidden;
-       
-        
-    }
-    h1{
-        line-height: 1.2;
-    }
+  
+ 
     .btn-primary:hover {
         color: white;
         border: none;
         background-color: #068E7D;
     }
-    p {
-        padding: 0 25px;
-        font-size: 14px;
-    }
-} */
+ 
+}
 
 @media (max-width: 835px) {
     h1{
