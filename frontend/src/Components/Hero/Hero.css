@@ -85,6 +85,10 @@ p {
 }
 
 @media (max-width: 835px) {
+
+    body {
+        overflow-x: hidden;
+    }
     h1{
         line-height: 1.2;
         font-size: 40px;
@@ -95,16 +99,12 @@ p {
         margin-top: 50px;
         text-align: center;
         margin: 50px auto 0 auto;
+
     }
   
 }
 
-/* @media (max-width: 500px) {
-    p {
-        padding: 0 25px;
-        font-size: 14px;
-    }
-} */
+
 
 
 
