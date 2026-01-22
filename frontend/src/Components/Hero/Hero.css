@@ -2,9 +2,10 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Quicksand', sans-serif;
-    overflow-x: hidden; 
-   
+    overflow-x: hidden;
+
 }
+
 .btn-primary {
     background-color: #068E7D;
     font-weight: 500;
@@ -14,11 +15,12 @@ body {
     border: none;
     border-radius: 60px;
 }
+
 .btn-primary:hover {
- background-color:white;
- color:#068E7D;
- border:#068E7D solid 1px;
- 
+    background-color: white;
+    color: #068E7D;
+    border: #068E7D solid 1px;
+
 }
 
 
@@ -33,14 +35,17 @@ h1 {
     font-weight: bolder;
     font-size: 90px;
 }
+
 p {
     font-weight: 400;
     line-height: normal;
 }
+
 .top {
     padding-left: 60px;
     margin-top: 90px;
 }
+
 .topimage {
     background-image: url(../Assets/shalewa.jpg);
     height: 678px;
@@ -49,36 +54,36 @@ p {
 }
 
 @media (max-width: 1280px) {
-   
-  
-  
+
+
+
     h1 {
         font-size: 80px;
         line-height: 1.2;
     }
- 
 
-  
+
+
     .btn-primary {
         margin-bottom: 60px;
         padding: 12px 40px;
         background-color: transparent;
-        color:#068E7D;
-        border:#068E7D solid 1px;
+        color: #068E7D;
+        border: #068E7D solid 1px;
     }
-  
+
 
     .btn-primary:hover {
         color: white;
         border: none;
         background-color: #068E7D;
     }
- 
+
 }
 
 @media (max-width: 1025px) {
-  
-    h1{
+
+    h1 {
         font-size: 70px;
         line-height: 1.2;
     }
@@ -88,28 +93,29 @@ p {
 
     body {
         overflow-x: hidden;
+        width: 100vw;
     }
-    h1{
+
+    h1 {
         line-height: 1.2;
         font-size: 40px;
         margin-bottom: 5px;
     }
 
     .top {
-        margin-top: 50px;
+        margin: 50px auto 5 auto;
+
         text-align: center;
-        margin: 50px auto 0 auto;
 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* vertical centering */
+        align-items: center;
+        box-sizing: border-box;
+        /* horizontal centering */
+        min-height: 70vh;
+        /* optional: takes 70% of viewport height for better vertical centering */
     }
-  
+
 }
-
-
-
-
-
-
-
-
-
-
