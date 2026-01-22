@@ -114,7 +114,6 @@ p {
         align-items: center;
         box-sizing: border-box;
         /* horizontal centering */
-        min-height: 70vh;
         /* optional: takes 70% of viewport height for better vertical centering */
     }
 
