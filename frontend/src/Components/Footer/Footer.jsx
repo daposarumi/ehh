@@ -11,35 +11,35 @@ export const Footer = () => {
     const scrollToBorokinni = () => {
         const borokinniSection = document.getElementById('borokinni');
         if (borokinniSection) {
-          borokinniSection.scrollIntoView({ behavior: 'smooth' });
+            borokinniSection.scrollIntoView({ behavior: 'smooth' });
         }
-      };
-  return (
-    <div className='footer'>
-        <div className='footerlogo'>
-            <img src={footerlogo} width="100" alt="logo"/>
-        </div>
-        <ul className='footer-links'>
-            <li> <a href="https://www.instagram.com/panachebyfunmi">About</a></li>
-           
-            <li ><Link to="/women">Products</Link></li>
-            <li><Link to="privacy-policy">Company</Link></li>
-        </ul>
-        <div className='footer-icons'>
-            <div>
-                <a href="https://www.instagram.com/panachebyfunmi"><FaInstagram style={{ fontSize: '1.2rem', color: 'white' }}/></a> 
+    };
+    return (
+        <div className='footer'>
+            <div className='footerlogo'>
+                <img src={footerlogo} width="100" alt="logo" />
             </div>
-            <div>
-                <a href="https://web.facebook.com/pinekitchen/about"><FaFacebook style={{ fontSize: '1.2rem', color: 'white' }}/></a>  
+            <ul className='footer-links'>
+                <li> <a href="https://www.instagram.com/panachebyfunmi">About</a></li>
+
+                <li ><Link to="/women">Products</Link></li>
+                <li><Link to="privacy-policy">Company</Link></li>
+            </ul>
+            <div className='footer-icons'>
+                <div>
+                    <a href="https://www.instagram.com/panachebyfunmi"><FaInstagram style={{ fontSize: '1.2rem', color: 'white' }} /></a>
+                </div>
+                <div>
+                    <a href="https://web.facebook.com/pinekitchen/about"><FaFacebook style={{ fontSize: '1.2rem', color: 'white' }} /></a>
+                </div>
+                <div>
+                    <a href="https://wa.me/c/2349084574434"><FaWhatsapp style={{ fontSize: '1.2rem', color: 'white' }} /></a>
+                </div>
             </div>
-            <div>
-                <a href="https://wa.me/c/2349084574434"><FaWhatsapp style={{ fontSize: '1.2rem', color: 'white' }}/></a>  
-            </div>      
+            <div className="footer-copyright">
+                <hr />
+                Copyright &copy;{new Date().getFullYear()}, PBF - All Rights Reserved
+            </div>
         </div>
-        <div className="footer-copyright">
-            <hr/>
-            <p>Copyright &copy;2024, PBF - All Rights Reserved</p>
-        </div>
-    </div>
-  )
+    )
 }
